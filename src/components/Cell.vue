@@ -1,7 +1,7 @@
 <template>
   <div
     class="cell"
-    :class="{ visited: visited, top: borders[0], right: borders[1], bottom: borders[2], left: borders[3], current: current }"
+    :class="{ visited: this.cell.visited, top: this.cell.top, right: this.cell.right, bottom: this.cell.bottom, left: this.cell.left }"
     :style="{ width: `${width}px`, height: `${height}px` }"
   />
 </template>
@@ -9,17 +9,6 @@
 <script>
 export default {
   name: "Cell",
-  computed: {
-    visited() {
-      return this.cell.visited
-    },
-    borders() {
-      return [ this.cell.top, this.cell.right, this.cell.bottom, this.cell.left ]
-    },
-    current() {
-      return this.cell.current;
-    }
-  },
   props: {
     cell: {
       type: Object,

@@ -13,7 +13,7 @@
       max="100"
       step="1"
     >
-    <button @click="grid.clearGrid()">
+    <button @click="grid.clearGrid(Number(this.gridSize))">
       Reset Maze
     </button>
     <button @click="grid.generateMaze()">

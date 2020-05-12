@@ -26,13 +26,17 @@
       "node": true
     },
     "extends": [
-      "plugin:vue/essential",
+      "plugin:vue/strongly-recommended",
       "eslint:recommended"
     ],
     "parserOptions": {
       "parser": "babel-eslint"
     },
-    "rules": {}
+    "rules": {
+      "vue/attributes-order": "warn",
+      "vue/eqeqeq": "warn",
+      "vue/script-indent": "warn"
+    }
   },
   "browserslist": [
     "> 1%",

@@ -1,17 +1,29 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <Maze
+      :grid="grid"
+      :width="400"
+      :height="400"
+    />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import Maze from "./components/Maze.vue";
+import { Grid } from "./logic/grid";
 
 export default {
   name: 'App',
+  data() {
+    return {
+      grid: []
+    }
+  },
   components: {
-    HelloWorld
+    Maze
+  },
+  mounted() {
+    this.grid = new Grid(10, 10);
   }
 }
 </script>

@@ -11,6 +11,7 @@
       <Cell
         v-for="(column, j) in numOfColumns"
         :key="j"
+        :cell="grid.grid[i][j]"
         :width="cellWidth"
         :height="cellHeight"
       />

@@ -2,8 +2,8 @@
   <div id="app">
     <Maze
       :grid="grid"
-      :width="400"
-      :height="400"
+      :width="1000"
+      :height="1000"
     />
   </div>
 </template>
@@ -23,12 +23,16 @@ export default {
     Maze
   },
   beforeMount() {
-    this.grid = new Grid(10, 10);
+    this.grid = new Grid(200, 200);
   }
 }
 </script>
 
 <style>
+* {
+  box-sizing: border-box;
+}
+
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

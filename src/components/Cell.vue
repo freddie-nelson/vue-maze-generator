@@ -1,7 +1,7 @@
 <template>
   <div
     class="cell"
-    :style="{ }"
+    :style="{ width: `${width}px`, height: `${height}px` }"
   />
 </template>
 
@@ -9,12 +9,20 @@
 export default {
   name: "Cell",
   props: {
-    width: Number,
-    height: Number
+    width: {
+      type: Number,
+      default: 10
+    },
+    height: {
+      type: Number,
+      default: 10
+    }
   }
 }
 </script>
 
-<style>
-
+<style scoped>
+.cell {
+    border: 1px solid black;
+}
 </style>

@@ -1,9 +1,20 @@
 <template>
-  <div class="maze">
-    <Cell
-      :width="cellWidth"
-      :height="cellHeight"
-    />
+  <div
+    class="maze"
+    :style="{ width: `${width}px`, height: `${height}px` }"
+  >
+    <div
+      v-for="(row, i) in numOfRows"
+      :key="i"
+      class="row"
+    >
+      <Cell
+        v-for="(column, j) in numOfColumns"
+        :key="j"
+        :width="cellWidth"
+        :height="cellHeight"
+      />
+    </div>
   </div>
 </template>
 
@@ -30,14 +41,29 @@ export default {
     }
   },
   props: {
-    grid: Object,
-    width: Number,
-    height: Number
+    grid: {
+      type: Object,
+      default() {
+        return {
+          grid: [[]]
+        }
+      }
+    },
+    width: {
+      type: Number,
+      default: 100,
+    },
+    height: {
+      type: Number,
+      default: 100
+    }
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-
+.row {
+  display: flex;
+}
 </style>

@@ -16,13 +16,13 @@ export default {
   name: 'App',
   data() {
     return {
-      grid: []
+      grid: {}
     }
   },
   components: {
     Maze
   },
-  mounted() {
+  beforeMount() {
     this.grid = new Grid(10, 10);
   }
 }

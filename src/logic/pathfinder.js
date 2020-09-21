@@ -19,7 +19,7 @@ class Pathfinder {
     while (this.currentCell !== this.destination) {
       this.nextCell();
 
-      await sleep(0);
+      await sleep(1);
     }
 
     // for (const cell of this.path) {

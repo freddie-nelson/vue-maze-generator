@@ -48,7 +48,7 @@ export class Grid {
     this.createGrid(size || this.gridSize);
   }
 
-  getNeighbours() {
+  findNeighbours() {
     const row = this.currentCell.row;
     const column = this.currentCell.column;
 
@@ -73,7 +73,12 @@ export class Grid {
       left = this.grid[row][column - 1];
     }
 
-    let neighbours = [top, right, bottom, left];
+    return [top, right, bottom, left];
+  }
+
+  getNeighbours() {
+    let neighbours = this.findNeighbours();
+
     neighbours = neighbours.filter(neighbour => {
       if (neighbour !== undefined && !neighbour.visited) {
         return neighbour;
@@ -141,15 +146,26 @@ export class Grid {
     }
   }
 
-  async generateMaze() {
+  async generateMaze(ms) {
     while (this.totalCells > this.visitedCells) {
-      // await sleep(2);
+      if (ms !== undefined) {
+        await sleep(ms);
+      }
       this.getNeighbours();
       this.pickNeighbour();
     }
   }
+
+  nextFrame() {
+    if (this.totalCells > this.visitedCells) {
+      this.getNeighbours();
+      this.pickNeighbour();
+    } else {
+      return
+    }
+  }
 }
 
-// function sleep(ms) {
-//   return new Promise(resolve => setTimeout(resolve, ms));
-// }
+function sleep(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}

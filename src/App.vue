@@ -4,20 +4,24 @@
       :grid="grid"
       :width="900"
       :height="900"
+      :generate="generate"
     />
     <input
       v-model="gridSize"
       type="range"
       name="Maze Size"
       min="5"
-      max="100"
+      max="200"
       step="1"
     >
-    <button @click="grid.clearGrid(Number(this.gridSize))">
+    <button @click="resetMaze">
       Reset Maze
     </button>
     <button @click="grid.generateMaze()">
       Generate Maze
+    </button>
+    <button @click="pathfinder.startPathfinder()">
+      Solve Maze
     </button>
   </div>
 </template>
@@ -25,6 +29,7 @@
 <script>
 import Maze from "./components/Maze.vue";
 import { Grid } from "./logic/grid";
+import Pathfinder from "./logic/pathfinder";
 import { debounce } from "debounce";
 
 export default {
@@ -32,17 +37,24 @@ export default {
   data() {
     return {
       grid: {},
-      gridSize: 40
+      pathfinder: {},
+      gridSize: 50,
+      generate: true
     }
   },
   watch: {
     gridSize(val) {
-      this.resizeGrid(Number(val))
+      this.gridSize = Number(val);
+      this.resetMaze();
     }
   },
   methods: {
     resizeGrid(size) {
       this.grid.clearGrid(size);
+    },
+    resetMaze() {
+      this.grid.clearGrid(this.gridSize);
+      this.pathfinder = new Pathfinder(this.grid.grid);
     }
   },
   components: {
@@ -50,8 +62,9 @@ export default {
   },
   beforeMount() {
     this.grid = new Grid(this.gridSize);
+    this.pathfinder = new Pathfinder(this.grid.grid);
 
-    this.resizeGrid = debounce(this.resizeGrid, 500)
+    this.resizeGrid = debounce(this.resizeGrid, 500);
   }
 }
 </script>

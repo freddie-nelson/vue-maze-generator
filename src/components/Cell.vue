@@ -30,26 +30,26 @@ export default {
 
 <style scoped>
 .visited {
-    background-color: rgb(122, 45, 173)
+  background-color: rgb(122, 45, 173)
 }
 
 .current {
-    background-color: yellowgreen !important;
+  background-color: yellowgreen !important;
 }
 
 .top {
-    border-top: 1px solid black;
+  border-top: 1px solid black;
 }
 
 .right {
-    border-right: 1px solid black;
+  border-right: 1px solid black;
 }
 
 .bottom {
-    border-bottom: 1px solid black;
+  border-bottom: 1px solid black;
 }
 
 .left {
-    border-left: 1px solid black;
+  border-left: 1px solid black;
 }
 </style>
